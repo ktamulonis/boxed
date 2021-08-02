@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'boxes#index'
+  devise_for :players
+  resources :games
+  root 'games#index'
   resources :boxes
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
