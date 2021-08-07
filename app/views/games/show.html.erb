@@ -5,14 +5,14 @@
 <div class='w-screen h-screen bg-pink-300 flex justify-center p-10'>
   <div id="<%=dom_id(@game.player)%>" class='w-full h-full bg-green-500 mr-5 grid grid-cols-4 gap-3' data-controller='court' data-action='click->court#dropBox' data-court-create-box-url-value='<%= new_box_path(game_id: @game.id) %>' data-court-delete-box-url-value='/box/'>
     <% @game.boxes.where(:player_id => @game.opponent.id).each do |box| %>
-      <%= render 'box', box: box %>
+      <%= render 'box', box: box, current_player: current_player %>
     <% end %>
     <h1><%= @game.player.email %> </h1>
   </div>
   <div id="<%=dom_id(@game.opponent)%>" class='w-full h-full bg-green-500 ml-5 grid grid-cols-4 gap-3' data-controller='court' data-action='click->court#dropBox' data-court-create-box-url-value='<%= new_box_path(game_id: @game.id) %>' data-court-delete-box-url-value='/box/'>
     
   	<% @game.boxes.where(:player_id => @game.player_id).each do |box| %>
-  	  <%= render 'box', box: box %>
+  	  <%= render 'box', box: box, current_player: current_player %>
   	<% end %>
     <h1><%= @game.opponent.email %></h1>
   </div>

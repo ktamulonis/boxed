@@ -61,9 +61,10 @@ class BoxesController < ApplicationController
 
   # DELETE /boxes/1 or /boxes/1.json
   def destroy
+    game = @box.game
     @box.destroy
     respond_to do |format|
-      format.html { redirect_to boxes_url, notice: "Box was successfully destroyed." }
+      format.html { redirect_to game_url(game), notice: "boom" }
       format.json { head :no_content }
     end
   end
