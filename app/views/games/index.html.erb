@@ -1,25 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Games</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class='bg-black h-screen flex justify-center items-center'>
     <% @games.each do |game| %>
-      <tr>
-        <td><%= link_to 'Show', game %></td>
-        <td><%= link_to 'Edit', edit_game_path(game) %></td>
-        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <%= link_to 'Show', game %>
+      <%= link_to 'Edit', edit_game_path(game) %>
+      <%= link_to 'Destroy', game, method: :delete %>
     <% end %>
-  </tbody>
-</table>
+  
 
-<br>
-
-<%= link_to 'New Game', new_game_path %>
+  <%= link_to new_game_path do %>
+    <div class='w-40 h-40 bg-white'></div>
+  <% end %>
+</div>
