@@ -13,6 +13,10 @@ class BoxesController < ApplicationController
   # GET /boxes/new
   def new
     @box = Box.new
+    @box.player_id = current_player.id
+    @box.color = params[:color]
+    @box.game_id = params[:game_id]
+    @box.save!
   end
 
   # GET /boxes/1/edit
