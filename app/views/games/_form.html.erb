@@ -12,7 +12,7 @@
   <% end %>
 
   <div class='opponent'>
-    <%= form.collection_select :opponent_id, Player.order(:email),:id,:email, include_blank: true %>
+    <%= form.collection_select :opponent_id, Player.where.not(:id => current_player.id ).order(:email),:id,:email, include_blank: true %>
   </div>
 
   <div class="actions">
