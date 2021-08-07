@@ -7,7 +7,7 @@ class Box < ApplicationRecord
   validate :player_cannot_be_opponent
 
   after_create_commit do
-    broadcast_append_to game, target: dom_id(player), partial: 'games/box', locals: {box: self}
+    broadcast_append_to game, target: dom_id(Player.find(self.opponent_id)), partial: 'games/box', locals: {box: self}
   end
 
   def player_cannot_be_opponent
