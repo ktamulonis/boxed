@@ -1,5 +1,5 @@
 function randomColor() {
-  let colors = ['bg-blue', 'bg-red', 'bg-gray', 'bg-yellow', 'bg-indigo', 'bg-purple', 'bg-pink']
+  let colors = ['bg-blue-400', 'bg-red-400', 'bg-gray-400', 'bg-yellow-400', 'bg-indigo-400', 'bg-purple-400', 'bg-pink-400']
   return colors[Math.floor(Math.random()*colors.length)];
 }
 function randomTailwindColorNumber() {
