@@ -7,11 +7,11 @@ class Player < ApplicationRecord
   has_many :boxes
 
   def in_a_game?
-    self.in_game.present?
+    self.active_game.present?
   end
 
-  def in_game
+  def active_game
     self.games.first ||
-    Game.where( :opponent_id => self.id )
+    Game.where( :opponent_id => self.id ).first
   end
 end

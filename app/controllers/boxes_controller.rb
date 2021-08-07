@@ -16,6 +16,7 @@ class BoxesController < ApplicationController
     @box.player_id = current_player.id
     @box.color = params[:color]
     @box.game_id = params[:game_id]
+    @box.opponent_id = Game.find(params[:game_id]).opponent_id
     @box.save!
   end
 
