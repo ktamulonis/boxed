@@ -1,12 +1,11 @@
-<div class='bg-black h-screen flex justify-center items-center'>
-    <% @games.each do |game| %>
-      <%= link_to 'Show', game %>
-      <%= link_to 'Edit', edit_game_path(game) %>
-      <%= link_to 'Destroy', game, method: :delete %>
+<div class='bg-black h-screen flex justify-center items-center'>  
+  <% if current_player.in_a_game? %>
+    <%= link_to game_path( current_player.in_game.first ) do %>
+      <div class='w-40 h-40 bg-green-300'></div>
     <% end %>
-  
-
-  <%= link_to new_game_path do %>
-    <div class='w-40 h-40 bg-white'></div>
+  <% else %>
+    <%= link_to new_game_path do %>
+      <div class='w-40 h-40 bg-white'></div>
+    <% end %>
   <% end %>
 </div>
