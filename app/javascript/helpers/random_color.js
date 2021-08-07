@@ -7,5 +7,5 @@ function randomTailwindColorNumber() {
   return numbers[Math.floor(Math.random()*numbers.length)];
 }
 export function randomBackground() {
-  return randomColor() + '-' + randomTailwindColorNumber()
+  return randomColor()
 }
