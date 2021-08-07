@@ -10,7 +10,7 @@ export default class extends Controller {
 
   dropBox() {
     let color = randomBackground()
-    let createBoxUrlWithColor = this.createBoxUrlValue + '&color=' + color
+    let createBoxUrlWithColor = this.createBoxUrlValue + '&color=bg-' + color
     if ( this.element.id == currentPlayer().dom_id ) {
       
     } else {
