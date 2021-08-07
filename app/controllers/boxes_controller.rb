@@ -1,5 +1,7 @@
 class BoxesController < ApplicationController
   before_action :set_box, only: %i[ show edit update destroy ]
+  before_action :set_game, only: %i[ new ]
+  before_action :set_other_player, only: %i[ new ]
 
   # GET /boxes or /boxes.json
   def index
@@ -15,9 +17,14 @@ class BoxesController < ApplicationController
     @box = Box.new
     @box.player_id = current_player.id
     @box.color = params[:color]
-    @box.game_id = params[:game_id]
-    @box.opponent_id = Game.find(params[:game_id]).opponent_id
-    @box.save!
+    @box.game_id = @game.id
+
+    @box.opponent_id = @other_player.id
+    if @box.save!
+      flash[:notice] = 'Box dropped'
+    else
+      flash[:notice] = errors
+    end
   end
 
   # GET /boxes/1/edit
@@ -62,6 +69,18 @@ class BoxesController < ApplicationController
   end
 
   private
+    def set_other_player
+      @other_player =
+        players_game? ? @game.opponent : @game.player
+    end
+
+    def players_game?
+      @game.player == current_player
+    end
+
+    def set_game
+      @game = Game.find(params[:game_id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_box
       @box = Box.find(params[:id])
